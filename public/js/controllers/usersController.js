@@ -3,7 +3,7 @@ angular
   .controller("UsersController", UsersController);
 
   UsersController.$inject = ['User', "CurrentUser", "$state", "$stateParams"];
-  function UsersController(User, $state, $stateParams){
+  function UsersController(User, CurrentUser, $state, $stateParams){
 
     var self = this;
 
@@ -15,13 +15,13 @@ angular
 
     self.all           = [];
     self.user          = null;
-    // self.currentUser   = null;
+    self.currentUser   = null;
     self.error         = null;
     self.getUsers      = getUsers;
     self.register      = register;
     self.login         = login;
     self.logout        = logout;
-    // self.checkLoggedIn = checkLoggedIn;
+    self.checkLoggedIn = checkLoggedIn;
 
     function getUsers() {
       User.query(function(data){
@@ -32,7 +32,7 @@ angular
     function handleLogin(res) {
       var token = res.token ? res.token : null;
       if (token) {
-        // self.currentUser = CurrentUser.getUser();
+        self.currentUser = CurrentUser.getUser();
         self.getUsers();
         $state.go("home");
       }
@@ -52,19 +52,19 @@ angular
 
     function logout() {
       self.all         = null;
-      // self.currentUser = null;
+      self.currentUser = null;
       self.user        = null;
       CurrentUser.clearUser();
     }
 
-    // function checkLoggedIn() {
-    //   self.currentUser = CurrentUser.getUser();
-    //   return !!self.currentUser;
-    // }
-    //
-    // if (checkLoggedIn()) {
-    //   self.getUsers();
-    // }
+    function checkLoggedIn() {
+      self.currentUser = CurrentUser.getUser();
+      return !!self.currentUser;
+    }
+
+    if (checkLoggedIn()) {
+      self.getUsers();
+    }
 
     return self;
   }
