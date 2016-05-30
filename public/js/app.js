@@ -47148,7 +47148,7 @@ function MainController($http, URL, $stateParams, $state, $sce) {
   function getStreams() {
     $http({
       method: "GET",
-      url: URL + "/streams/kylelong"
+      url: URL + "/streams/phantomsfx"
     }).then(function(res){
       self.iframesrc = $sce.getTrustedResourceUrl("http://player.twitch.tv/?channel=" + res.data.stream.channel.display_name);
     }, function(res){
