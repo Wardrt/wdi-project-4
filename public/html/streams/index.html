@@ -1,5 +1,9 @@
 <ul>
   <li ng-repeat="stream in streams.all">
-    <img ng-src="{{ stream.preview.medium }}"/>
+    <a href="#" ui-sref="stream">
+      <img ng-src="{{ stream.preview.medium }}"/>
+    </a>
+    <h4>{{ stream.channel.display_name }}</h4>
+    <p>{{ stream.channel.status }}</p>
   </li>
 </ul>
