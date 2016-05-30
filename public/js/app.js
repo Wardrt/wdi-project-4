@@ -47154,6 +47154,7 @@ function MainController($http, URL, $stateParams, $state, $sce) {
   var self = this;
   self.all = [];
   self.getStreams = getStreams;
+  self.getStream  = getStream;
 
   function getStreams() {
     $http({
@@ -47166,12 +47167,15 @@ function MainController($http, URL, $stateParams, $state, $sce) {
     });
   }
 
-  function getStream() {
+  function getStream(name) {
+    console.log(name);
     $http({
       method: "GET",
-      url: URL + "/streams/" + $stateParams
+      url: URL + "/streams/" + name
     }).then(function(res){
+      console.log(res);
       self.iframesrc = $sce.getTrustedResourceUrl("http://player.twitch.tv/?channel=" + res.data.stream.channel.display_name);
+      console.log(self.iframesrc);
     });
   }
   getStreams();
