@@ -12,7 +12,8 @@ var expressJWT     = require('express-jwt');
 var app            = express();
 
 var config         = require("./config/config");
-var secret         = require('./config/config').secret;
+var User           = require("./models/user");
+var secret         = require("./config/config").secret;
 
 mongoose.connect(config.database);
 
@@ -32,6 +33,8 @@ app.use(cookieParser());
 app.use(morgan('dev'));
 app.use(cors());
 app.use(passport.initialize());
+app.use("/", express.static("public"));
+app.use("/", express.static("bower_components"));
 
 app.use('/api', expressJWT({ secret: secret })
   .unless({
@@ -50,5 +53,9 @@ app.use(function (err, req, res, next) {
 
 var routes = require('./config/routes');
 app.use("/api", routes);
+
+app.get("/*", function(req, res) {
+  res.sendFile(__dirname + "/public/index.html");
+});
 
 app.listen(config.port);
