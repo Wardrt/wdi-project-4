@@ -7,7 +7,7 @@ module.exports = function(grunt) {
     bower_concat: {
       all: {
         dest: {
-          'public/js': 'public/src/js/_bower.js'
+          'js': 'public/src/js/_bower.js'
         }
       }
     },
@@ -23,7 +23,7 @@ module.exports = function(grunt) {
     },
     concat: {
       dist: {
-        src: ['public/src/js/app.js', 'public/src/js/**/*.js'],
+        src: ['public/src/js/_bower.js', 'public/src/js/app.js', 'public/src/js/**/*.js'],
         dest: 'public/js/app.js'
       }
     },
