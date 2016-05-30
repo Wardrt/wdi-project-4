@@ -1,10 +1,6 @@
 angular
-  .module("twitchRoulette", ["ngResource", 'angular-jwt', "ui.router"])
-  .constant('API', 'http://localhost:3000/api')
-  .config(MainRouter)
-  .config(function($httpProvider){
-    $httpProvider.interceptors.push("authInterceptor");
-  });
+  .module("twitchRoulette")
+  .config(MainRouter);
 
 MainRouter.$inject = ["$stateProvider", "$urlRouterProvider", "$locationProvider"];
 function MainRouter($stateProvider, $urlRouterProvider, $locationProvider) {

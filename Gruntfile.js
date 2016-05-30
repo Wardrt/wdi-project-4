@@ -2,21 +2,21 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     jshint: {
-      src: ['src/js/**/*.js']
+      src: ['public/src/js/**/*.js']
     },
     sass: {
       expanded: {
         options: { outputStyle: 'expanded' },
-        files: { 'public/css/style.css': 'src/scss/style.scss' }
+        files: { 'public/css/style.css': 'public/src/scss/style.scss' }
       },
       compressed: {
         options: { outputStyle: 'compressed' },
-        files: { 'public/css/style.min.css': 'src/scss/style.scss' }
+        files: { 'public/css/style.min.css': 'public/src/scss/style.scss' }
       }
     },
     concat: {
       dist: {
-        src: ['src/js/app.js', 'src/js/**/*.js'],
+        src: ['public/src/js/app.js', 'public/src/js/**/*.js'],
         dest: 'public/js/app.js'
       }
     },
@@ -29,12 +29,12 @@ module.exports = function(grunt) {
         options: { reload: true }
       },
       scss: {
-        files: ['src/scss/**/*.scss'],
+        files: ['public/src/scss/**/*.scss'],
         tasks: ['sass'],
         options: { livereload: true }
       },
       js: {
-        files: ['src/js/**/*.js'],
+        files: ['public/src/js/**/*.js'],
         tasks: ['jshint', 'concat', 'uglify'],
         options: { livereload: true }
       },

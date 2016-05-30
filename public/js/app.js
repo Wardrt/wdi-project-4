@@ -1,10 +1,18 @@
 angular
-  .module("twitchRoulette", ["ngResource", 'angular-jwt', "ui.router"])
-  .constant('API', 'http://localhost:3000/api')
-  .config(MainRouter)
-  .config(function($httpProvider){
-    $httpProvider.interceptors.push("authInterceptor");
-  });
+  .module("twitchRoulette", ["ngResource", 'angular-jwt', "ui.router"]);
+
+angular
+  .module("twitchRoulette")
+  .config(Interceptor);
+
+Interceptor.$inject = ["$httpProvider"];
+function Interceptor($httpProvider){
+  $httpProvider.interceptors.push("authInterceptor");
+}
+
+angular
+  .module("twitchRoulette")
+  .config(MainRouter);
 
 MainRouter.$inject = ["$stateProvider", "$urlRouterProvider", "$locationProvider"];
 function MainRouter($stateProvider, $urlRouterProvider, $locationProvider) {
@@ -35,6 +43,10 @@ function MainRouter($stateProvider, $urlRouterProvider, $locationProvider) {
 
   $urlRouterProvider.otherwise("/");
 }
+
+angular
+  .module("twitchRoulette")
+  .constant('API', 'http://localhost:3000/api');
 
 
 angular
