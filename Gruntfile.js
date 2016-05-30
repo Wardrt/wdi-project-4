@@ -2,13 +2,16 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     jshint: {
-      src: ['public/src/js/**/*.js', '!public/src/js/_bower.js']
+      src: ['public/src/js/**/*.js', '!public/src/js/_bower.js', '!public/src/js/_jquery.js']
     },
     bower_concat: {
       all: {
         dest: {
           'js': 'public/src/js/_bower.js',
           'css': 'public/src/scss/_bower.scss'
+        },
+        mainFiles: {
+          'jquery': ['dist/jquery.js']
         }
       }
     },
@@ -30,7 +33,7 @@ module.exports = function(grunt) {
     },
     concat: {
       dist: {
-        src: ['public/src/js/_bower.js', 'public/src/js/app.js', 'public/src/js/**/*.js'],
+        src: ['public/src/js/_bower.js', 'public/src/js/_jquery.js', 'public/src/js/app.js', 'public/src/js/**/*.js'],
         dest: 'public/js/app.js'
       }
     },
