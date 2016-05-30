@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="twitchRoulette">
   <head>
     <meta charset="utf-8">
     <title>Twitch Roulette</title>
@@ -20,7 +20,7 @@
     <script src="/js/controllers/usersController.js"></script>
     <base href="/" />
   </head>
-  <body>
+  <body ng-controller="">
     <header>
       <nav>
         <ul>
@@ -39,5 +39,7 @@
         </ul>
       </nav>
     </header>
+
+    <main ui-view></main>
   </body>
 </html>
