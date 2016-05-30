@@ -42,11 +42,41 @@ module.exports = function(grunt) {
         files: ['public/index.html'],
         options: { livereload: true }
       }
+    },
+    replace: {
+      production: {
+        options: {
+          patterns: [{
+            match: /app\.js/,
+            replacement: 'app.min.js'
+          },{
+            match: /style\.css/,
+            replacement: 'style.min.css'
+          }]
+        },
+        files: [
+          { expand: true, flatten: true, src: ['public/index.html'] }
+        ]
+      },
+      development: {
+        options: {
+          patterns: [{
+            match: /app\.min\.js/,
+            replacement: 'app.js'
+          },{
+            match: /style\.min\.css/,
+            replacement: 'style.css'
+          }]
+        },
+        files: [
+          { expand: true, flatten: true, src: ['public/index.html'] }
+        ]
+      }
     }
   });
 
   require('load-grunt-tasks')(grunt);
 
   grunt.registerTask("default", ['jshint', 'sass', 'concat', 'uglify', 'watch']);
-  // grunt.registerTask("deploy", ['jshint', 'sass:compressed', 'concat', 'uglify']);
+  grunt.registerTask("deploy", ['jshint', 'sass:compressed', 'concat', 'uglify']);
 };
