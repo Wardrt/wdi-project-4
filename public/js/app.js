@@ -47122,6 +47122,10 @@ angular
   .module("twitchRoulette")
   .constant('API', 'http://localhost:3000/api');
 
+angular
+  .module("twitchRoulette")
+  .constant('URL', 'https://api.twitch.tv/kraken');
+
 
 angular
   .module("twitchRoulette")
