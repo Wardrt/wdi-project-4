@@ -47113,6 +47113,16 @@ function MainRouter($stateProvider, $urlRouterProvider, $locationProvider) {
       url: "/users/:id",
       templateUrl: "/html/users/show.html",
       controller: "UsersController as profile"
+    })
+    .state('streams', {
+      url: "/streams",
+      templateUrl: "/html/streams/index.html",
+      controller: "MainController as streams"
+    })
+    .state('stream', {
+      url: "/streams/:display_name",
+      templateUrl: "/html/streams/show.html",
+      controller: "MainController as stream"
     });
 
   $urlRouterProvider.otherwise("/");
@@ -47143,19 +47153,28 @@ angular
 MainController.$inject = ["$http", "URL", "$stateParams", "$state", "$sce"];
 function MainController($http, URL, $stateParams, $state, $sce) {
   var self = this;
+  self.all = [];
   self.getStreams = getStreams;
 
   function getStreams() {
     $http({
       method: "GET",
-      url: URL + "/streams/phantomsfx"
+      url: URL + "/streams/"
     }).then(function(res){
-      self.iframesrc = $sce.getTrustedResourceUrl("http://player.twitch.tv/?channel=" + res.data.stream.channel.display_name);
+      self.streamThumbnails = res.data.streams;
     }, function(res){
       console.log(res);
     });
   }
-  getStreams();
+
+  function getStream() {
+    $http({
+      method: "GET",
+      url: URL + "/streams/" + $stateParams
+    }).then(function(res){
+      self.iframesrc = $sce.getTrustedResourceUrl("http://player.twitch.tv/?channel=" + res.data.stream.channel.display_name);
+    });
+  }
 }
 
 angular

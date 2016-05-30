@@ -27,6 +27,16 @@ function MainRouter($stateProvider, $urlRouterProvider, $locationProvider) {
       url: "/users/:id",
       templateUrl: "/html/users/show.html",
       controller: "UsersController as profile"
+    })
+    .state('streams', {
+      url: "/streams",
+      templateUrl: "/html/streams/index.html",
+      controller: "MainController as streams"
+    })
+    .state('stream', {
+      url: "/streams/:display_name",
+      templateUrl: "/html/streams/show.html",
+      controller: "MainController as stream"
     });
 
   $urlRouterProvider.otherwise("/");

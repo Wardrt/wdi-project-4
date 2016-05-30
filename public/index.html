@@ -28,6 +28,9 @@
             <li class="nav-link">
               <a ng-show="users.checkLoggedIn()" href="#" ui-sref="home" ng-click="users.logout()">Logout</a>
             </li>
+            <li class="nav-link">
+              <a ng-show="users.checkLoggedIn()" href="#" ui-sref="streams" ng-click="MainController.getStreams()">Streams</a>
+            </li>
           </ul>
         </nav>
         <div class="navigation-tools">
@@ -43,12 +46,6 @@
       </div>
     </header>
 
-    <div id="stream-pane" ng-controller="MainController as streams">
-      <iframe ng-src="{{ streams.iframesrc }}" width="1280" height="720">
-        Something went wrong...
-      </iframe>
-    </div>
-
-    <!-- <main ui-view></main> -->
+    <main ui-view></main>
   </body>
 </html>
