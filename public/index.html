@@ -43,10 +43,12 @@
       </div>
     </header>
 
-    <div ng-controller="MainController as streams">
-      <iframe src="http://player.twitch.tv/?channel={}" width="1280" height="720"></iframe>
+    <div id="stream-pane" ng-controller="MainController as streams">
+      <iframe ng-src="{{ streams.stream }}" width="1280" height="720">
+        Something went wrong...
+      </iframe>
     </div>
 
-    <main ui-view></main>
+    <!-- <main ui-view></main> -->
   </body>
 </html>
