@@ -1,1 +1,5 @@
-<h1>users show</h1>
+<section>
+  <img ng-src="{{profile.user.local.image}}" />
+  <h3>{{ profile.user.local.fullname | uppercase }}</h3>
+  <p>{{ profile.user.local.email }}</p>
+</section>
