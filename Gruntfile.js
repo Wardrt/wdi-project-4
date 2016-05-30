@@ -14,11 +14,17 @@ module.exports = function(grunt) {
     },
     sass: {
       expanded: {
-        options: { outputStyle: 'expanded' },
+        options: {
+          outputStyle: 'expanded',
+          includePaths: require('node-neat').includePaths
+        },
         files: { 'public/css/style.css': 'public/src/scss/style.scss' }
       },
       compressed: {
-        options: { outputStyle: 'compressed' },
+        options: {
+          outputStyle: 'compressed',
+          includePaths: require('node-neat').includePaths
+        },
         files: { 'public/css/style.min.css': 'public/src/scss/style.scss' }
       }
     },
