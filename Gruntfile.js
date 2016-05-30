@@ -2,7 +2,14 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     jshint: {
-      src: ['public/src/js/**/*.js']
+      src: ['public/src/js/**/*.js', '!public/src/js/_bower.js']
+    },
+    bower_concat: {
+      all: {
+        dest: {
+          'public/js': 'public/src/js/_bower.js'
+        }
+      }
     },
     sass: {
       expanded: {
@@ -77,6 +84,6 @@ module.exports = function(grunt) {
 
   require('load-grunt-tasks')(grunt);
 
-  grunt.registerTask("default", ['jshint', 'sass', 'concat', 'uglify', 'watch']);
-  grunt.registerTask("deploy", ['jshint', 'sass:compressed', 'concat', 'uglify']);
+  grunt.registerTask("default", ['jshint', 'bower_concat', 'sass:expanded', 'concat', 'uglify', 'watch']);
+  grunt.registerTask("deploy", ['jshint', 'bower_concat', 'sass:compressed', 'concat', 'uglify']);
 };
