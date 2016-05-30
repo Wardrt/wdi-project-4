@@ -20,21 +20,21 @@
     <script src="/js/controllers/usersController.js"></script>
     <base href="/" />
   </head>
-  <body ng-controller="">
+  <body ng-controller="UsersController as users">
     <header>
       <nav>
         <ul>
           <li>
-            <a href="#">Users</a>
+            <a href="#" ui-sref="users">Users</a>
           </li>
           <li>
-            <a href="#">Login</a>
+            <a href="#" ui-sref="login">Login</a>
           </li>
           <li>
-            <a href="#">Register</a>
+            <a href="#" ui-sref="register">Register</a>
           </li>
           <li>
-            <a href="#">Logout</a>
+            <a href="#" ui-sref="home" ng-click="users.logout()">Logout</a>
           </li>
         </ul>
       </nav>
