@@ -10,10 +10,10 @@ function MainController($http, URL, $stateParams, $scope, $state) {
   function getStreams() {
     $http({
       method: "GET",
-      url: URL + "streams/incon"
+      url: URL + "/streams/incon"
     }).then(function(res){
       console.log(res);
     });
   }
-
+  getStreams();
 }
