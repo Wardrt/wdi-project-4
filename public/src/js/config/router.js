@@ -34,8 +34,7 @@ function MainRouter($stateProvider, $urlRouterProvider, $locationProvider) {
     })
     .state('stream', {
       url: "/streams/:name",
-      templateUrl: "/html/streams/show.html",
-      controller: "MainController as stream"
+      templateUrl: "/html/streams/show.html"
     });
 
   $urlRouterProvider.otherwise("/");

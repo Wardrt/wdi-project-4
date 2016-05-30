@@ -17,7 +17,7 @@
         <nav role="navigation">
           <ul id="js-navigation-menu" class="navigation-menu show">
             <li class="nav-link">
-              <a ng-show="users.checkLoggedIn()" href="#" ui-sref="user">Profile</a>
+              <a ng-show="users.checkLoggedIn()" href="#" ui-sref="user({id: users.currentUser._id})">Profile</a>
             </li>
             <li class="nav-link">
               <a ng-hide="users.checkLoggedIn()" href="#" ui-sref="login">Login</a>

@@ -47120,8 +47120,7 @@ function MainRouter($stateProvider, $urlRouterProvider, $locationProvider) {
     })
     .state('stream', {
       url: "/streams/:name",
-      templateUrl: "/html/streams/show.html",
-      controller: "MainController as stream"
+      templateUrl: "/html/streams/show.html"
     });
 
   $urlRouterProvider.otherwise("/");
@@ -47173,7 +47172,6 @@ function MainController($http, URL, $stateParams, $state, $sce) {
       method: "GET",
       url: URL + "/streams/" + name
     }).then(function(res){
-      console.log(res);
       self.iframesrc = $sce.getTrustedResourceUrl("http://player.twitch.tv/?channel=" + res.data.stream.channel.display_name);
       console.log(self.iframesrc);
     });
