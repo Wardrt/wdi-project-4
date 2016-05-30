@@ -5,6 +5,41 @@ var bodyParser     = require("body-parser");
 var mongoose       = require("mongoose");
 var methodOverride = require("method-override");
 
-
+var config         = require("/config/config.js");
 
 var app            = express();
+
+mongoose.connect(config.database);
+
+app.use(methodOverride(function(req, res){
+  if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+    var method = req.body._method;
+    delete req.body._method;
+    return method;
+  }
+}));
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(morgan('dev'));
+app.use(cors());
+
+app.use('/api', expressJWT({ secret: secret })
+  .unless({
+    path: [
+      { url: '/api/login', methods: ['POST'] },
+      { url: '/api/register', methods: ['POST'] }
+    ]
+}));
+
+app.use(function (err, req, res, next) {
+  if (err.name === 'UnauthorizedError') {
+    return res.status(401).json({message: 'Unauthorized request.'});
+  }
+  next();
+});
+
+var routes = require('./config/routes');
+app.use("/api", routes);
+
+app.listen(config.port);
