@@ -11,9 +11,9 @@ function MainController($http, URL, $stateParams, $state, $sce) {
   function getStreams() {
     $http({
       method: "GET",
-      url: URL + "/streams/"
+      url: URL + "/streams"
     }).then(function(res){
-      self.all = res.data.streams;
+      self.all = $sce.getTrustedResourceUrl(res.data.streams);
     }, function(res){
       console.log(res);
     });
@@ -27,4 +27,5 @@ function MainController($http, URL, $stateParams, $state, $sce) {
       self.iframesrc = $sce.getTrustedResourceUrl("http://player.twitch.tv/?channel=" + res.data.stream.channel.display_name);
     });
   }
+  getStreams();
 }

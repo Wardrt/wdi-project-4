@@ -47116,11 +47116,10 @@ function MainRouter($stateProvider, $urlRouterProvider, $locationProvider) {
     })
     .state('streams', {
       url: "/streams",
-      templateUrl: "/html/streams/index.html",
-      controller: "MainController as streams"
+      templateUrl: "/html/streams/index.html"
     })
     .state('stream', {
-      url: "/streams/:display_name",
+      url: "/streams/:name",
       templateUrl: "/html/streams/show.html",
       controller: "MainController as stream"
     });
@@ -47159,9 +47158,9 @@ function MainController($http, URL, $stateParams, $state, $sce) {
   function getStreams() {
     $http({
       method: "GET",
-      url: URL + "/streams/"
+      url: URL + "/streams"
     }).then(function(res){
-      self.streamThumbnails = res.data.streams;
+      self.all = $sce.getTrustedResourceUrl(res.data.streams);
     }, function(res){
       console.log(res);
     });
@@ -47175,6 +47174,7 @@ function MainController($http, URL, $stateParams, $state, $sce) {
       self.iframesrc = $sce.getTrustedResourceUrl("http://player.twitch.tv/?channel=" + res.data.stream.channel.display_name);
     });
   }
+  getStreams();
 }
 
 angular
