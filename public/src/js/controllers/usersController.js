@@ -26,12 +26,11 @@ angular
 
     function sendMessage(){
       var socket = io();
-        console.log('form submit!');
         socket.emit('chat message', $('#m').val());
         $('#m').val('');
       socket.on('message', function(msg){
-        var message = $('<li>').text(msg);
-        console.log(message);
+        var user = self.currentUser.local.username;
+        var message = '<li><span>' + user + ': </span>' + msg + '</li>';
         $('#messages').append(message);
       });
     }
