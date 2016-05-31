@@ -15,6 +15,9 @@ var config         = require("./config/config");
 var User           = require("./models/user");
 var secret         = require("./config/config").secret;
 
+var http           = require("http").createServer(app);
+var io             = require("socket.io")(http);
+
 mongoose.connect(config.database);
 
 app.use(methodOverride(function(req, res){
@@ -59,4 +62,10 @@ app.get("/*", function(req, res) {
   res.sendFile(__dirname + "/public/index.html");
 });
 
-app.listen(config.port);
+io.on('connection', function(socket){
+  console.log('a user connected');
+});
+
+http.listen(config.port, function(){
+  console.log("listening to the server", config.port);
+});

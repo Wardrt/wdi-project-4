@@ -4,8 +4,12 @@
     <meta charset="utf-8">
     <title>Twitch Roulette</title>
     <link rel="stylesheet" href="/css/style.css" />
+    <script src="/socket.io/socket.io.js"></script>
     <script src="/js/app.min.js"></script>
     <base href="/" />
+    <script>
+      var socket = io();
+    </script>
   </head>
   <body ng-controller="UsersController as users">
     <header class="navigation" role="banner">
