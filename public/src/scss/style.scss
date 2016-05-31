@@ -9,8 +9,20 @@ body {
   font: 13px Helvetica, Arial;
 }
 
+h1 {
+  margin-top: 13px;
+}
+
+section {
+  margin-top: 13px;
+}
+
 .main-template {
   transform: translateY(61px);
+}
+
+#chat-box-margin {
+  margin-top: 74px;
 }
 
 // ******** CHAT BOX ********
