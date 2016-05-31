@@ -31,6 +31,11 @@ angular
         socket.emit('chat message', $('#m').val());
         $('#m').val('');
       });
+      socket.on('chat message', function(msg){
+        console.log(msg);
+        var message = $('<li>').text(msg);
+        $('#messages').html(message);
+      });
     }
 
     function getUsers() {
