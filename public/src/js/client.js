@@ -1,7 +1,3 @@
-// ******** SOCKETS ********
-
-
-
 // ******** NAVBAR ********
 
 $(window).resize(function() {

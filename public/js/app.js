@@ -47040,10 +47040,6 @@ return jQuery;
 angular
   .module("twitchRoulette", ["ngResource", 'angular-jwt', "ui.router"]);
 
-// ******** SOCKETS ********
-
-
-
 // ******** NAVBAR ********
 
 $(window).resize(function() {
@@ -47211,15 +47207,13 @@ angular
 
     function sendMessage() {
       var socket = io();
-      console.log("submitted");
       $('form').submit(function(){
         socket.emit('chat message', $('#m').val());
         $('#m').val('');
       });
-      socket.on('chat message', function(msg){
-        console.log(msg);
+      socket.on('message', function(msg){
         var message = $('<li>').text(msg);
-        $('#messages').html(message);
+        $('#messages').append(message);
       });
     }
 
