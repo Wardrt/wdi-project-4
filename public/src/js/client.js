@@ -1,3 +1,7 @@
+// ******** SOCKETS ********
+
+
+
 // ******** NAVBAR ********
 
 $(window).resize(function() {
@@ -19,6 +23,18 @@ $(window).resize(function() {
   }
 });
 
+function checkHolderOffset() {
+  return holder.offsetTop <= window.scrollY;
+}
+
+var handleStickyness = function() {
+  holder.classList.toggle('sticky', checkHolderOffset());
+};
+
+function tryCheck() {
+  requestAnimationFrame(handleStickyness);
+}
+
 $(document).ready(function() {
   var menuToggle = $("#js-mobile-menu").unbind();
   $("#js-navigation-menu").removeClass("show");
@@ -31,4 +47,7 @@ $(document).ready(function() {
       }
     });
   });
+  var holder = document.getElementById("holder");
+  window.addEventListener('scroll', tryCheck, false);
+  window.addEventListener('resize', tryCheck, false);
 });

@@ -86,6 +86,10 @@ header.navigation .navigation-wrapper::after {
   display: table;
 }
 
+.sticky header.navigation .navigation-wrapper {
+  position: fixed;
+}
+
 header.navigation .logo {
   float: left;
   max-height: 60px;

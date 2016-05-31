@@ -9,10 +9,15 @@
     <base href="/" />
     <script>
       var socket = io();
+      $('form').submit(function(){
+        socket.emit('chat message', $('#m').val());
+        $('#m').val('');
+        return false;
+      });
     </script>
   </head>
   <body ng-controller="UsersController as users">
-    <header class="navigation" role="banner">
+    <header class="navigation" id="holder" role="banner">
       <div class="navigation-wrapper">
         <a href="javascript:void(0)" ui-sref="home" class="logo">
           <img src="https://raw.githubusercontent.com/thoughtbot/refills/49db8c0f2f8066c2c3a275781503fe3303a1a9fc/source/images/placeholder.png" alt="Logo Image">
