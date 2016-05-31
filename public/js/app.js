@@ -47204,11 +47204,13 @@ angular
     self.logout           = logout;
     self.checkLoggedIn    = checkLoggedIn;
     self.sendMessage      = sendMessage;
+    self.pairUsers        = pairUsers;
 
     function sendMessage(){
       var socket = io();
         socket.emit('chat message', $('#m').val());
         $('#m').val('');
+
       socket.on('message', function(msg){
         var user = self.currentUser.local.username;
         var message = '<li><span>' + user + ': </span>' + msg + '</li>';
@@ -47218,7 +47220,7 @@ angular
     }
 
     function pairUsers() {
-      
+      // Do stuff in the backend, to find users with a socket id and only show the page to those two users.
     }
 
     function getUsers() {
