@@ -11,6 +11,10 @@ body {
   padding: 0;
 }
 
+#stream-pane {
+  float: left;
+}
+
 header.navigation {
   background-color: #333;
   border-bottom: 1px solid #1a1a1a;
