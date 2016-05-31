@@ -4,9 +4,9 @@
   </iframe>
 </div>
 
-<div class="js-menu panel-content" ng-submit="users.sendMessage()">
+<div class="js-menu panel-content">
   <ul id="messages"></ul>
-  <form id="chat-form">
+  <form id="chat-form" ng-submit="users.sendMessage()">
     <input id="m" autocomplete="off" /><button type="submit">Send</button>
   </form>
 </div>
