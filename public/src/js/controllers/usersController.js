@@ -22,6 +22,17 @@ angular
     self.login         = login;
     self.logout        = logout;
     self.checkLoggedIn = checkLoggedIn;
+    self.sendMessage   = sendMessage;
+
+    function sendMessage() {
+      var socket = io();
+      console.log("submitted");
+      $('form').submit(function(){
+        socket.emit('chat message', $('#m').val());
+        $('#m').val('');
+        return false;
+      });
+    }
 
     function getUsers() {
       User.query(function(data){
