@@ -47184,7 +47184,9 @@ angular
   UsersController.$inject = ['User', "CurrentUser", "$state", "$stateParams"];
   function UsersController(User, CurrentUser, $state, $stateParams){
 
-    var self = this;
+    var self        = this;
+    var colors      = ['red', 'blue', 'green'];
+    var randomColor = colors[Math.floor(Math.random() * colors.length)];
 
     if ($stateParams.id) {
       self.user = User.get({ id: $stateParams.id }, function(res){
@@ -47192,16 +47194,16 @@ angular
       });
     }
 
-    self.all           = [];
-    self.user          = null;
-    self.currentUser   = null;
-    self.error         = null;
-    self.getUsers      = getUsers;
-    self.register      = register;
-    self.login         = login;
-    self.logout        = logout;
-    self.checkLoggedIn = checkLoggedIn;
-    self.sendMessage   = sendMessage;
+    self.all              = [];
+    self.user             = null;
+    self.currentUser      = null;
+    self.error            = null;
+    self.getUsers         = getUsers;
+    self.register         = register;
+    self.login            = login;
+    self.logout           = logout;
+    self.checkLoggedIn    = checkLoggedIn;
+    self.sendMessage      = sendMessage;
 
     function sendMessage(){
       var socket = io();
@@ -47211,7 +47213,12 @@ angular
         var user = self.currentUser.local.username;
         var message = '<li><span>' + user + ': </span>' + msg + '</li>';
         $('#messages').append(message);
+        $('span').css('color', randomColor);
       });
+    }
+
+    function pairUsers() {
+      
     }
 
     function getUsers() {
