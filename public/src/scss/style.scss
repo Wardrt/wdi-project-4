@@ -9,6 +9,10 @@ body {
   font: 13px Helvetica, Arial;
 }
 
+.main-template {
+  transform: translateY(61px);
+}
+
 // ******** CHAT BOX ********
 
 #stream-pane {
@@ -95,14 +99,13 @@ header.navigation {
   min-height: $navigation-height;
   width: 100%;
   z-index: 999;
+  position: fixed;
+  transform: translateY(-13px);
 
   .navigation-wrapper {
     @include clearfix;
     position: relative;
     z-index: 9999;
-    .sticky & {
-      position: fixed;
-    }
   }
 
   .logo {
