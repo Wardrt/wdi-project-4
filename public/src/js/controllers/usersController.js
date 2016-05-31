@@ -26,12 +26,9 @@ angular
 
     function sendMessage(){
       var socket = io();
-      // $('form').submit(function(){
         console.log('form submit!');
         socket.emit('chat message', $('#m').val());
-
         $('#m').val('');
-      // });
       socket.on('message', function(msg){
         var message = $('<li>').text(msg);
         console.log(message);
