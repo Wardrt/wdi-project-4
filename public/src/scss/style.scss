@@ -2,6 +2,7 @@
 @import 'neat';
 
 // ******** BASIC ********
+// To fix header and chat box, height on nav needs to be fixed, form needs to be inside nav, header needs to be translated down by 0?
 
 body {
   margin: 0;
@@ -21,34 +22,26 @@ section {
   transform: translateY(61px);
 }
 
-#chat-box-margin {
-  margin-top: 74px;
-}
-
 // ******** CHAT BOX ********
 
 #stream-pane {
-  float: right;
+  float: left;
+  transform: translateY(61px);
 }
 
-.sliding-panel-content {
-  $action-color: #477DCA !default;
+.panel-content {
   $dark-gray: #333 !default;
   $sliding-panel-border-color: $dark-gray;
   $sliding-panel-background: #fff;
-  $sliding-panel-color: #fff;
   $sliding-panel-border: 1px solid $sliding-panel-border-color;
-  $sliding-panel-background-hover: $action-color;
-  $sliding-panel-color-hover: #fff;
-  $sliding-panel-background-focus: lighten($sliding-panel-background, 5%);
 
-  @include position(fixed, 0 auto 0 0);
+  @include position(fixed, 0 0 0 auto);
   @include size(300px 100%);
   background: $sliding-panel-background;
   -webkit-overflow-scrolling: touch;
   overflow-y: auto;
   border: $sliding-panel-border;
-  margin-top: 60px;
+  margin-top: 61px;
 
   #chat-form {
     background: #000;

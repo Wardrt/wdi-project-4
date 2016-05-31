@@ -24,30 +24,27 @@ section {
   transform: translateY(61px);
 }
 
-#chat-box-margin {
-  margin-top: 74px;
-}
-
 #stream-pane {
-  float: right;
+  float: left;
+  transform: translateY(61px);
 }
 
-.sliding-panel-content {
+.panel-content {
   position: fixed;
   top: 0;
-  right: auto;
+  right: 0;
   bottom: 0;
-  left: 0;
+  left: auto;
   height: 100%;
   width: 300px;
   background: #fff;
   -webkit-overflow-scrolling: touch;
   overflow-y: auto;
   border: 1px solid #333;
-  margin-top: 60px;
+  margin-top: 61px;
 }
 
-.sliding-panel-content #chat-form {
+.panel-content #chat-form {
   background: #000;
   padding: 3px;
   position: fixed;
@@ -55,31 +52,31 @@ section {
   width: 298px;
 }
 
-.sliding-panel-content #chat-form input {
+.panel-content #chat-form input {
   border: 0;
   padding: 10px;
   width: 240px;
   margin-right: 9px;
 }
 
-.sliding-panel-content #chat-form button {
+.panel-content #chat-form button {
   width: 38px;
   background: #82e0ff;
   border: none;
   padding: 8px 5px;
 }
 
-.sliding-panel-content #messages {
+.panel-content #messages {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
-.sliding-panel-content #messages li {
+.panel-content #messages li {
   padding: 5px 10px;
 }
 
-.sliding-panel-content #messages li:nth-child(odd) {
+.panel-content #messages li:nth-child(odd) {
   background: #eee;
 }
 

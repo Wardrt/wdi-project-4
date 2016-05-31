@@ -1,4 +1,4 @@
-<ul>
+<ul class="main-template">
   <li ng-repeat="stream in streams.all">
     <a href="#" ui-sref="stream({name: stream.channel.display_name})" ng-click="streams.getStream(stream.channel.display_name)">
       <img ng-src="{{ stream.preview.medium }}"/>
