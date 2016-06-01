@@ -33,7 +33,7 @@ angular
 
     function sendMessage(){
       if (self.message.length > 0) {
-        socket.emit('chat message', { text: self.message, username: self.currentUser.local.username });
+        socket.emit('chat message', { text: self.message, username: self.currentUser.local.username, color: randomColor });
         self.message = "";
       }
     }
@@ -41,7 +41,7 @@ angular
     socket.on('message', function(msg){
       var message = '<li><span>' + msg.username + ': </span>' + trim(msg.text) + '</li>';
       $('#messages').append(message);
-      $('span').css('color', randomColor);
+      $('span').css('color', msg.color);
       $('.panel-content').animate({scrollTop: $('.panel-content').prop("scrollHeight")}, 500);
     });
 
