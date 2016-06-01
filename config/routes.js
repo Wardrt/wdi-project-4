@@ -3,6 +3,7 @@ var router  = express.Router();
 
 var usersController = require('../controllers/usersController');
 var authenticationsController = require('../controllers/authenticationsController');
+var chatController = require('../controllers/chatController');
 
 router.post('/login', authenticationsController.login);
 router.post('/register', authenticationsController.register);
@@ -17,5 +18,8 @@ router.route('/users/:id')
   .get(usersController.usersShow)
   .patch(usersController.usersUpdate)
   .delete(usersController.usersDelete);
+
+router.route('/chats/open')
+  .post(chatController.open);
 
 module.exports = router;

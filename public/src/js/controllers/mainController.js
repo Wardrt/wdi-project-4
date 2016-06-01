@@ -37,7 +37,6 @@ function MainController($http, URL, $stateParams, $state, $sce) {
   }
 
   function searchForStream() {
-    console.log(self.search);
     $state.go("stream", { name: self.search });
   }
 

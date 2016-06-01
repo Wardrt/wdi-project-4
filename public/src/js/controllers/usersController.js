@@ -24,7 +24,6 @@ angular
     self.logout           = logout;
     self.checkLoggedIn    = checkLoggedIn;
     self.sendMessage      = sendMessage;
-    self.pairUsers        = pairUsers;
 
     socket.on('connection', function(){
       console.log("I'm connected init");
@@ -48,10 +47,6 @@ angular
 
     function trim(str){
       return str.replace(/^\s+|\s+$/g, '');
-    }
-
-    function pairUsers() {
-      // Do stuff in the backend, to find users with a socket id and only show the page to those two users.
     }
 
     function getUsers() {

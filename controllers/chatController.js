@@ -1,12 +1,38 @@
 var Chat = require("../models/chat");
 
-function open(){
-  // Find if there are any open chats that have a sender but no receiver
-  // If there is, fill the reciever position and mark as closed
-  // If not, create a new one
-  // The _id of the chat can be the unique channel name
+function open(req, res){
+  Chat.findOne({
+    sender: { $exists: true},
+    receiver: { $exists: false}
+  }, function(err, chat) {
+    if (chat === null) {
+      var newChat = new Chat(
+        {
+          sender: req.body.user._id,
+          open: true,
+          socketId: req.body.socketId
+        }
+      );
+      newChat.save(function(err, createdChat) {
+        if (err) return res.status(500).send(err);
+        return res.status(200).send(createdChat);
+      });
+    } else {
+      chat.receiver = req.body.user._id;
+      chat.open = false;
+      chat.save(function(err, savedChat) {
+        if (err) return res.status(500).send(err);
+        return res.status(200).send(savedChat);
+      });
+    }
+  });
 }
 
 function close(){
   // Mark chat as closed
 }
+
+module.exports = {
+  open: open,
+  close: close
+};

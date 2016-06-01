@@ -13,6 +13,7 @@ var app            = express();
 
 var config         = require("./config/config");
 var User           = require("./models/user");
+var Chat           = require("./models/chat");
 var secret         = require("./config/config").secret;
 
 var http           = require("http").createServer(app);
@@ -62,9 +63,10 @@ app.get("/*", function(req, res) {
   res.sendFile(__dirname + "/public/index.html");
 });
 
+
 io.on('connection', function(socket){
+  console.log(socket.client.conn.id);
   socket.on('chat message', function(msg){
-    console.log(msg);
     io.emit('message', msg);
   });
 });
