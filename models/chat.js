@@ -1,8 +1,11 @@
 var mongoose = require("mongoose");
 
 var chatSchema = mongoose.Schema({
-  sender: { type: string, unique: true },
-  receiver: { type: string, unique: true }
+  stream: {
+    sender: [{ type: mongoose.Schema.ObjectId, ref: 'User', required: true }],
+    receiver: [{ type: mongoose.Schema.ObjectId, ref: 'User', required: true }],
+    socketId: { type: string, required: true }
+  }
 });
 
 module.exports = mongoose.model("Chat", chatSchema);
