@@ -26,7 +26,9 @@ function MainController($http, URL, $stateParams, $state, $sce) {
       method: "GET",
       url: URL + "/streams/" + name
     }).then(function(res){
-      self.iframesrc = $sce.getTrustedResourceUrl("http://player.twitch.tv/?channel=" + res.data.stream.channel.display_name);
+      var streamerName = res.data.stream.channel.url;
+      var streamer = streamerName.replace(/(https:\/\/www.twitch.tv\/)/g, "");
+      self.iframesrc = $sce.getTrustedResourceUrl("http://player.twitch.tv/?channel=" + streamer);
     });
   }
 
