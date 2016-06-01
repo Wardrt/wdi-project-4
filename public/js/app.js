@@ -47217,7 +47217,6 @@ angular
             if (msg.text.charAt(i) === " ") {
               return;
             } else {
-              var user = self.currentUser.local.username;
               var message = '<li><span>' + msg.username + ': </span>' + msg.text + '</li>';
               $('#messages').append(message);
               $('span').css('color', randomColor);
