@@ -47216,6 +47216,7 @@ angular
         var message = '<li><span>' + msg.username + ': </span>' + msg.text + '</li>';
         $('#messages').append(message);
         $('span').css('color', randomColor);
+        $('.panel-content').animate({scrollTop: $('.panel-content').prop("scrollHeight")}, 500);
       });
     }
 
