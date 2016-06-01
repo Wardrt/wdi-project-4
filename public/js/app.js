@@ -47176,7 +47176,7 @@ function MainController($http, URL, $stateParams, $state, $sce) {
     });
   }
 
-  function searchForStream(data) {
+  function searchForStream() {
     // On search run this function to find by display_name, and load the stream show page for that stream.
     // If the stream doesn't exist (wrong name or is offline) load a page that has some info saying to search again for a new stream.
 
