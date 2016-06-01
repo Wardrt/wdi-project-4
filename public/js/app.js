@@ -47213,11 +47213,17 @@ angular
         $('#m').val('');
 
         socket.on('message', function(msg){
-          var user = self.currentUser.local.username;
-          var message = '<li><span>' + msg.username + ': </span>' + msg.text + '</li>';
-          $('#messages').append(message);
-          $('span').css('color', randomColor);
-          $('.panel-content').animate({scrollTop: $('.panel-content').prop("scrollHeight")}, 500);
+          for (var i = 0; i < msg.text.length; i++) {
+            if (msg.text.charAt(i) === " ") {
+              return;
+            } else {
+              var user = self.currentUser.local.username;
+              var message = '<li><span>' + msg.username + ': </span>' + msg.text + '</li>';
+              $('#messages').append(message);
+              $('span').css('color', randomColor);
+              $('.panel-content').animate({scrollTop: $('.panel-content').prop("scrollHeight")}, 500);
+            }
+          }
         });
       }
     }
