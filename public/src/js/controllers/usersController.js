@@ -29,16 +29,18 @@ angular
 
     function sendMessage(){
       var socket = io();
-      socket.emit('chat message', { text: $('#m').val(), username: self.currentUser.local.username });
-      $('#m').val('');
+      if ($('#m').val().length > 0) {
+        socket.emit('chat message', { text: $('#m').val(), username: self.currentUser.local.username });
+        $('#m').val('');
 
-      socket.on('message', function(msg){
-        var user = self.currentUser.local.username;
-        var message = '<li><span>' + msg.username + ': </span>' + msg.text + '</li>';
-        $('#messages').append(message);
-        $('span').css('color', randomColor);
-        $('.panel-content').animate({scrollTop: $('.panel-content').prop("scrollHeight")}, 500);
-      });
+        socket.on('message', function(msg){
+          var user = self.currentUser.local.username;
+          var message = '<li><span>' + msg.username + ': </span>' + msg.text + '</li>';
+          $('#messages').append(message);
+          $('span').css('color', randomColor);
+          $('.panel-content').animate({scrollTop: $('.panel-content').prop("scrollHeight")}, 500);
+        });
+      }
     }
 
     function pairUsers() {
