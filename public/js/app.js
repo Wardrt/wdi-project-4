@@ -47208,12 +47208,12 @@ angular
 
     function sendMessage(){
       var socket = io();
-        socket.emit('chat message', $('#m').val());
-        $('#m').val('');
+      socket.emit('chat message', { text: $('#m').val(), username: self.currentUser.local.username });
+      $('#m').val('');
 
       socket.on('message', function(msg){
         var user = self.currentUser.local.username;
-        var message = '<li><span>' + user + ': </span>' + msg + '</li>';
+        var message = '<li><span>' + msg.username + ': </span>' + msg.text + '</li>';
         $('#messages').append(message);
         $('span').css('color', randomColor);
       });
