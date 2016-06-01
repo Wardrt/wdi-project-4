@@ -33,7 +33,12 @@ angular
 
     function sendMessage(){
       if (self.message.length > 0) {
-        socket.emit('chat message', { text: self.message, username: self.currentUser.local.username, color: randomColor });
+        socket.emit('chat message', {
+          text: self.message,
+          username: self.currentUser.local.username,
+          color: randomColor,
+          channel: "eleaguetv" 
+        });
         self.message = "";
       }
     }

@@ -63,11 +63,13 @@ app.get("/*", function(req, res) {
   res.sendFile(__dirname + "/public/index.html");
 });
 
-
 io.on('connection', function(socket){
-  console.log(socket.client.conn.id);
   socket.on('chat message', function(msg){
-    io.emit('message', msg);
+    console.log(msg);
+    io.in(msg.channel).emit('message', msg);
+  });
+  socket.on("join", function(room){
+    socket.join(room);
   });
 });
 

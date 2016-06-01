@@ -47150,8 +47150,8 @@ angular
   .module("twitchRoulette")
   .controller("MainController", MainController);
 
-MainController.$inject = ["$http", "URL", "$stateParams", "$state", "$sce"];
-function MainController($http, URL, $stateParams, $state, $sce) {
+MainController.$inject = ["$http", "URL", "$stateParams", "$state", "$sce", "socket"];
+function MainController($http, URL, $stateParams, $state, $sce, socket) {
   var self             = this;
   self.all             = [];
   self.getStreams      = getStreams;
@@ -47188,6 +47188,7 @@ function MainController($http, URL, $stateParams, $state, $sce) {
     $state.go("stream", { name: self.search });
   }
 
+  socket.emit("join", $stateParams.name);
 
   getStreams();
 }
@@ -47227,7 +47228,12 @@ angular
 
     function sendMessage(){
       if (self.message.length > 0) {
-        socket.emit('chat message', { text: self.message, username: self.currentUser.local.username, color: randomColor });
+        socket.emit('chat message', {
+          text: self.message,
+          username: self.currentUser.local.username,
+          color: randomColor,
+          channel: "eleaguetv" 
+        });
         self.message = "";
       }
     }
