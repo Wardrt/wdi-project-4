@@ -75,6 +75,8 @@ section {
 
 .panel-content #messages li {
   padding: 5px 10px;
+  max-width: 298px;
+  word-wrap: break-word;
 }
 
 .panel-content #messages li:nth-child(odd) {
