@@ -30,11 +30,13 @@ function MainRouter($stateProvider, $urlRouterProvider, $locationProvider) {
     })
     .state('streams', {
       url: "/streams",
-      templateUrl: "/html/streams/index.html"
+      templateUrl: "/html/streams/index.html",
+      controller: "MainController as streams"
     })
     .state('stream', {
       url: "/streams/:name",
-      templateUrl: "/html/streams/show.html"
+      templateUrl: "/html/streams/show.html",
+      controller: "MainController as streams"
     });
 
   $urlRouterProvider.otherwise("/");

@@ -18,27 +18,27 @@
         <nav role="navigation">
           <ul id="js-navigation-menu" class="navigation-menu show">
             <li class="nav-link">
-              <a ng-show="users.checkLoggedIn()" href="#" ui-sref="user({id: users.currentUser._id})">Profile</a>
+              <a ng-show="users.checkLoggedIn()" ui-sref="user({id: users.currentUser._id})">Profile</a>
             </li>
             <li class="nav-link">
-              <a ng-hide="users.checkLoggedIn()" href="#" ui-sref="login">Login</a>
+              <a ng-hide="users.checkLoggedIn()" ui-sref="login">Login</a>
             </li>
             <li class="nav-link">
-              <a ng-hide="users.checkLoggedIn()" href="#" ui-sref="register">Register</a>
+              <a ng-hide="users.checkLoggedIn()" ui-sref="register">Register</a>
             </li>
             <li class="nav-link">
-              <a ng-show="users.checkLoggedIn()" href="#" ui-sref="home" ng-click="users.logout()">Logout</a>
+              <a ng-show="users.checkLoggedIn()" ui-sref="home" ng-click="users.logout()">Logout</a>
             </li>
             <li class="nav-link">
-              <a ng-show="users.checkLoggedIn()" href="#" ui-sref="streams">Streams</a>
+              <a ng-show="users.checkLoggedIn()" ui-sref="streams">Streams</a>
             </li>
           </ul>
         </nav>
         <div class="navigation-tools">
-          <div class="search-bar">
-            <form role="search" ng-submit="MainController.getStream(stream)">
-              <input type="search" placeholder="Enter Search" ng-model="stream"/>
-              <button type="submit" ui-sref="stream({name: stream})">
+          <div class="search-bar" ng-controller="MainController as search">
+            <form role="search" ng-submit="search.searchForStream()">
+              <input type="search" placeholder="Enter Search" ng-model="search.search"/>
+              <button type="submit">
                 <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/search-icon.png" alt="Search Icon">
               </button>
             </form>
@@ -47,6 +47,6 @@
       </div>
     </header>
 
-    <main ng-controller="MainController as streams" ui-view></main>
+    <main ui-view></main>
   </body>
 </html>

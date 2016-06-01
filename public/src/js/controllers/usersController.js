@@ -2,12 +2,11 @@ angular
   .module("twitchRoulette")
   .controller("UsersController", UsersController);
 
-  UsersController.$inject = ['User', "CurrentUser", "$state", "$stateParams"];
-  function UsersController(User, CurrentUser, $state, $stateParams){
+  UsersController.$inject = ['User', "CurrentUser", "$state", "$stateParams", "socket"];
+  function UsersController(User, CurrentUser, $state, $stateParams, socket){
 
     var self        = this;
-    var colors      = ['red', 'blue', 'green'];
-    var randomColor = colors[Math.floor(Math.random() * colors.length)];
+    var randomColor = '#'+Math.floor(Math.random()*16777215).toString(16);
 
     if ($stateParams.id) {
       self.user = User.get({ id: $stateParams.id }, function(res){
@@ -27,25 +26,28 @@ angular
     self.sendMessage      = sendMessage;
     self.pairUsers        = pairUsers;
 
-    function sendMessage(){
-      var socket = io();
-      if ($('#m').val().length > 0) {
-        socket.emit('chat message', { text: $('#m').val(), username: self.currentUser.local.username });
-        $('#m').val('');
+    socket.on('connection', function(){
+      console.log("I'm connected init");
+    });
 
-        socket.on('message', function(msg){
-          for (var i = 0; i < msg.text.length; i++) {
-            if (msg.text.charAt(i) === " ") {
-              return;
-            } else {
-              var message = '<li><span>' + msg.username + ': </span>' + msg.text + '</li>';
-              $('#messages').append(message);
-              $('span').css('color', randomColor);
-              $('.panel-content').animate({scrollTop: $('.panel-content').prop("scrollHeight")}, 500);
-            }
-          }
-        });
+    self.message = "";
+
+    function sendMessage(){
+      if (self.message.length > 0) {
+        socket.emit('chat message', { text: self.message, username: self.currentUser.local.username });
+        self.message = "";
       }
+    }
+
+    socket.on('message', function(msg){
+      var message = '<li><span>' + msg.username + ': </span>' + trim(msg.text) + '</li>';
+      $('#messages').append(message);
+      $('span').css('color', randomColor);
+      $('.panel-content').animate({scrollTop: $('.panel-content').prop("scrollHeight")}, 500);
+    });
+
+    function trim(str){
+      return str.replace(/^\s+|\s+$/g, '');
     }
 
     function pairUsers() {
