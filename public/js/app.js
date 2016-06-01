@@ -47242,7 +47242,7 @@ angular
       var message = '<li><span id="' + msg.username + '">' + msg.username + ': </span>' + trim(msg.text) + '</li>';
       $('#messages').append(message);
       console.log("first", msg.color);
-      $('#' + msg.username).css('color', msg.color);
+      $('span#' + msg.username).css('color', msg.color);
       console.log("second", msg.color);
       $('.panel-content').animate({scrollTop: $('.panel-content').prop("scrollHeight")}, 500);
     });
