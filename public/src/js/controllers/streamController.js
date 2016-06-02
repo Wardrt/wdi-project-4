@@ -1,9 +1,9 @@
 angular
   .module("twitchRoulette")
-  .controller("MainController", MainController);
+  .controller("StreamController", StreamController);
 
-MainController.$inject = ["$http", "URL", "$stateParams", "$state", "$sce", "socket"];
-function MainController($http, URL, $stateParams, $state, $sce, socket) {
+StreamController.$inject = ["$http", "URL", "$stateParams", "$state", "$sce", "socket"];
+function StreamController($http, URL, $stateParams, $state, $sce, socket) {
   var self             = this;
   self.all             = [];
   self.getStreams      = getStreams;

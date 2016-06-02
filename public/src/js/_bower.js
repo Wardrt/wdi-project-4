@@ -24989,7 +24989,7 @@ var ngControllerDirective = [function() {
       // csp mode in our http server!
       <example name="example.csp" module="cspExample" ng-csp="true">
         <file name="index.html">
-          <div ng-controller="MainController as ctrl">
+          <div ng-controller="StreamController as ctrl">
             <div>
               <button ng-click="ctrl.inc()" id="inc">Increment</button>
               <span id="counter">
@@ -25007,7 +25007,7 @@ var ngControllerDirective = [function() {
         </file>
         <file name="script.js">
            angular.module('cspExample', [])
-             .controller('MainController', function() {
+             .controller('StreamController', function() {
                 this.counter = 0;
                 this.inc = function() {
                   this.counter++;

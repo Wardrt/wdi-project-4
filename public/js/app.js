@@ -24989,7 +24989,7 @@ var ngControllerDirective = [function() {
       // csp mode in our http server!
       <example name="example.csp" module="cspExample" ng-csp="true">
         <file name="index.html">
-          <div ng-controller="MainController as ctrl">
+          <div ng-controller="StreamController as ctrl">
             <div>
               <button ng-click="ctrl.inc()" id="inc">Increment</button>
               <span id="counter">
@@ -25007,7 +25007,7 @@ var ngControllerDirective = [function() {
         </file>
         <file name="script.js">
            angular.module('cspExample', [])
-             .controller('MainController', function() {
+             .controller('StreamController', function() {
                 this.counter = 0;
                 this.inc = function() {
                   this.counter++;
@@ -47117,12 +47117,12 @@ function MainRouter($stateProvider, $urlRouterProvider, $locationProvider) {
     .state('streams', {
       url: "/streams",
       templateUrl: "/html/streams/index.html",
-      controller: "MainController as streams"
+      controller: "StreamController as streams"
     })
     .state('stream', {
       url: "/streams/:name",
       templateUrl: "/html/streams/show.html",
-      controller: "MainController as streams"
+      controller: "StreamController as streams"
     });
 
   $urlRouterProvider.otherwise("/");
@@ -47148,10 +47148,10 @@ angular
 
 angular
   .module("twitchRoulette")
-  .controller("MainController", MainController);
+  .controller("StreamController", StreamController);
 
-MainController.$inject = ["$http", "URL", "$stateParams", "$state", "$sce", "socket"];
-function MainController($http, URL, $stateParams, $state, $sce, socket) {
+StreamController.$inject = ["$http", "URL", "$stateParams", "$state", "$sce", "socket"];
+function StreamController($http, URL, $stateParams, $state, $sce, socket) {
   var self             = this;
   self.all             = [];
   self.getStreams      = getStreams;
