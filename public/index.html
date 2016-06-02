@@ -56,5 +56,86 @@
     </header>
 
     <main ui-view></main>
+
+    <div class="modal">
+      <input class="modal-state" id="modal-1" type="checkbox" />
+      <div class="modal-fade-screen">
+        <div class="modal-inner">
+          <div class="modal-close" for="modal-1"></div>
+          <form id="login" name="users.loginForm" ng-submit="users.login()" novalidate>
+            <div class="alert alert-danger" role="alert" ng-show="(!!users.error && users.loginForm.$submitted)">{{ users.error }}</div>
+
+            <div>
+              <input type="email" id="email" placeholder="Email" name="email" ng-model="users.user.email" required>
+            </div>
+
+            <div role="alert" ng-messages="users.loginForm['email'].$error" ng-show="(users.loginForm.$submitted && users.loginForm['email'].$invalid)">
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              <span class="sr-only">Error:</span>
+              <span ng-message="required">Email is required.</span>
+            </div>
+
+            <div>
+              <input type="password" id="password" placeholder="Password" name="password" ng-model="users.user.password" required>
+            </div>
+
+            <div role="alert" ng-messages="users.loginForm['password'].$error" ng-show="(users.loginForm.$submitted && users.loginForm['password'].$invalid)">
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              <span class="sr-only">Error:</span>
+              <span ng-message="required">Password is required.</span>
+            </div>
+
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal">
+      <input class="modal-state" id="modal-2" type="checkbox">
+      <div class="modal-fade-screen">
+        <div class="modal-inner">
+          <div class="modal-close" for="modal-2"></div>
+          <form id="register" name="users.registerForm" ng-submit="users.register()" novalidate>
+
+            <div>
+              <input type="text" id="username" placeholder="Username" name="username" ng-model="users.user.username">
+            </div>
+
+            <div>
+              <input type="text" id="fullname" placeholder="Full Name" name="fullname" ng-model="users.user.fullname">
+            </div>
+
+            <div>
+              <input type="text" id="image" placeholder="Profile Picture" name="image" ng-model="users.user.image">
+            </div>
+
+            <div>
+              <input type="email" id="email" placeholder="Email" name="email" ng-model="users.user.email" required>
+            </div>
+
+            <div role="alert" ng-messages="users.loginForm['email'].$error" ng-show="(users.loginForm.$submitted && users.loginForm['email'].$invalid)">
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              <span class="sr-only">Error:</span>
+              <span ng-message="required">Email is required.</span>
+            </div>
+
+            <div>
+              <input type="password" id="password" placeholder="Password" name="password" ng-model="users.user.password" required>
+            </div>
+
+            <div role="alert" ng-messages="users.loginForm['password'].$error" ng-show="(users.loginForm.$submitted && users.loginForm['password'].$invalid)">
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              <span class="sr-only">Error:</span>
+              <span ng-message="required">Password is required.</span>
+            </div>
+
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
   </body>
 </html>

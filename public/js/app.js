@@ -47086,7 +47086,7 @@ $(function() {
     }
   });
 
-  $(".modal-fade-screen, .modal-close").on("click", function() {
+  $(".modal-fade-screen, .modal-close, button").on("click", function() {
     $(".modal-state:checked").prop("checked", false).change();
   });
 
