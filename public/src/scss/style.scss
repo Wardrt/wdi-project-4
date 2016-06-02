@@ -60,6 +60,15 @@ section {
   }
 }
 
+.home-footer {
+  text-align: center;
+  background-color: $twitch-color-purple;
+  color: $twitch-color-black;
+  p {
+    padding: 1%;
+  }
+}
+
 // ******** CHAT BOX ********
 
 #stream-pane {

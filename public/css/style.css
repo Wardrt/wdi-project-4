@@ -2926,6 +2926,16 @@ section {
   background-color: #eee;
 }
 
+.home-footer {
+  text-align: center;
+  background-color: #6441A5;
+  color: #19171C;
+}
+
+.home-footer p {
+  padding: 1%;
+}
+
 #stream-pane {
   float: left;
   transform: translateY(61px);
