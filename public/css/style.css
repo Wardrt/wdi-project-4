@@ -2883,11 +2883,11 @@ body {
   font: 13px Helvetica, Arial;
   display: flex;
   color: #aaa;
+  background-color: #19171C;
 }
 
 main {
   width: 100%;
-  background-color: #19171C;
 }
 
 h1 {

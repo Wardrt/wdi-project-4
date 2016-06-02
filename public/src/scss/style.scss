@@ -14,11 +14,11 @@ body {
   font: 13px Helvetica, Arial;
   display: flex;
   color: #aaa;
+  background-color: $twitch-color-black;
 }
 
 main {
   width: 100%;
-  background-color: $twitch-color-black;
 }
 
 h1 {
