@@ -1,7 +1,7 @@
 <section class="main-template">
-  <img ng-src="{{profile.currentUser.local.image}}" />
-  <h3>{{ profile.currentUser.local.fullname | uppercase }}</h3>
-  <p>{{ profile.currentUser.local.email }}</p>
+  <img ng-src="{{profile.user.local.image}}" />
+  <h3>{{ profile.user.local.fullname | uppercase }}</h3>
+  <p>{{ profile.user.local.email }}</p>
   <label for="modal-3">
     <div class="modal-trigger">Edit</div>
   </label>
@@ -15,19 +15,19 @@
       <form id="edit" name="users.editForm" ng-submit="users.editUser()" novalidate>
 
         <div>
-          <input type="text" id="username" name="username" ng-model="profile.currentUser.local.username">
+          <input type="text" id="username" name="username" ng-model="profile.user.local.username">
         </div>
 
         <div>
-          <input type="text" id="fullname" name="fullname" ng-model="profile.currentUser.local.fullname">
+          <input type="text" id="fullname" name="fullname" ng-model="profile.user.local.fullname">
         </div>
 
         <div>
-          <input type="text" id="image" name="image" ng-model="profile.currentUser.local.image">
+          <input type="text" id="image" name="image" ng-model="profile.user.local.image">
         </div>
 
         <div>
-          <input type="email" id="email" name="email" ng-model="profile.currentUser.local.email" required>
+          <input type="email" id="email" name="email" ng-model="profile.user.local.email" required>
         </div>
 
         <div>

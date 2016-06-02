@@ -83,7 +83,7 @@ angular
     }
 
     function editUser() {
-      User.update({ id: self.currentUser._id }, { user: self.currentUser }, function(data){
+      User.update({ id: $stateParams._id }, { user: self.currentUser }, function(data){
         self.user = data;
       });
     }

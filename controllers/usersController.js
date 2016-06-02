@@ -16,6 +16,8 @@ function usersShow(req, res){
 
 function usersUpdate(req, res){
   var id = req.params.id;
+  console.log(id);
+  console.log(req.body.user);
   User.findByIdAndUpdate({ _id: id }, req.body.user, { new: true }, function(err, user) {
     if (err) return res.status(500).send(err);
     if (!user) return res.status(404).send(err);
