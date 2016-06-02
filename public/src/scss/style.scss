@@ -13,10 +13,12 @@ body {
   padding: 0;
   font: 13px Helvetica, Arial;
   display: flex;
+  color: #aaa;
 }
 
 main {
   width: 100%;
+  background-color: $twitch-color-black;
 }
 
 h1 {
