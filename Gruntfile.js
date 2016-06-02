@@ -11,7 +11,8 @@ module.exports = function(grunt) {
           'css': 'public/src/scss/_bower.scss'
         },
         mainFiles: {
-          'jquery': ['dist/jquery.js']
+          'jquery': ['dist/jquery.js'],
+          'font-awesome': ['css/font-awesome.css']
         }
       }
     },
