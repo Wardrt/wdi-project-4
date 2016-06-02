@@ -18,19 +18,23 @@
         <nav role="navigation">
           <ul id="js-navigation-menu" class="navigation-menu show">
             <li class="nav-link">
-              <a ng-show="users.checkLoggedIn()" ui-sref="user({id: users.currentUser._id})">Profile</a>
+              <div ng-show="users.checkLoggedIn()" ui-sref="user({id: users.currentUser._id})">Profile</div>
             </li>
             <li class="nav-link">
-              <a ng-hide="users.checkLoggedIn()" ui-sref="login">Login</a>
+              <div ng-hide="users.checkLoggedIn()">
+                <label for="modal-1">
+                  <div class="modal-trigger">Login</div>
+                </label>
+              </div>
             </li>
             <li class="nav-link">
-              <a ng-hide="users.checkLoggedIn()" ui-sref="register">Register</a>
+              <div ng-hide="users.checkLoggedIn()" ui-sref="register">Register</div>
             </li>
             <li class="nav-link">
-              <a ng-show="users.checkLoggedIn()" ui-sref="home" ng-click="users.logout()">Logout</a>
+              <div ng-show="users.checkLoggedIn()" ui-sref="home" ng-click="users.logout()">Logout</div>
             </li>
             <li class="nav-link">
-              <a ng-show="users.checkLoggedIn()" ui-sref="streams">Streams</a>
+              <div ng-show="users.checkLoggedIn()" ui-sref="streams">Streams</div>
             </li>
           </ul>
         </nav>
