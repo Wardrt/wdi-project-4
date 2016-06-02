@@ -40,14 +40,31 @@ section {
   $sliding-panel-border: 1px solid $sliding-panel-border-color;
 
   @include position(fixed, 0 0 0 auto);
-  @include size(300px 100%);
+  @include size(300px calc(100% - 100px));
   background: $sliding-panel-background;
   -webkit-overflow-scrolling: touch;
   overflow-y: auto;
   border: $sliding-panel-border;
   margin-top: 61px;
 
+  #messages {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    li {
+      padding: 5px 10px;
+      max-width: 298px;
+      word-wrap:break-word;
+    }
+    li:nth-child(odd) {
+      background: #eee;
+    }
+  }
+}
+
   #chat-form {
+    @include position(fixed, calc(100% - 39px) 0 0 auto);
+    @include size(300px 39px);
     background: #000;
     padding: 3px;
     position: fixed;
@@ -66,21 +83,6 @@ section {
       padding: 8px 5px;
     }
   }
-
-  #messages {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    li {
-      padding: 5px 10px;
-      max-width: 298px;
-      word-wrap:break-word;
-    }
-    li:nth-child(odd) {
-      background: #eee;
-    }
-  }
-}
 
 // ******** NAVBAR ********
 
