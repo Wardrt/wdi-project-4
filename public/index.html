@@ -28,7 +28,11 @@
               </div>
             </li>
             <li class="nav-link">
-              <div ng-hide="users.checkLoggedIn()" ui-sref="register">Register</div>
+              <div ng-hide="users.checkLoggedIn()" >
+                <label for="modal-2">
+                  <div class="modal-trigger">Register</div>
+                </label>
+              </div>
             </li>
             <li class="nav-link">
               <div ng-show="users.checkLoggedIn()" ui-sref="home" ng-click="users.logout()">Logout</div>
