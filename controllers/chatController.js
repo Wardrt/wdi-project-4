@@ -31,7 +31,7 @@ function open(req, res){
 function close(req, res){
   // Mark chat as closed
   // When a chat has a sender and receiver, chat is closed.
-  // When a sender or receiver leaves the chat the chat is open again.
+  // When a sender or receiver leaves the chat is open again.
   // If sender leaves, receiver becomes sender?
   Chat.find({
     open: false
