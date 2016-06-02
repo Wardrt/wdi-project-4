@@ -83,11 +83,10 @@ angular
     }
 
     function editUser() {
-      console.log(self.user);
       User.update({ id: $stateParams.id }, { user: self.user }, function(data){
         self.user = data;
       });
-      // $(".modal-state:checked").prop("checked", false).change();
+      $(".modal-state:checked").prop("checked", false).change();
     }
 
     function logout() {
