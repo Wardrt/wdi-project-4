@@ -2,4 +2,40 @@
   <img ng-src="{{profile.currentUser.local.image}}" />
   <h3>{{ profile.currentUser.local.fullname | uppercase }}</h3>
   <p>{{ profile.currentUser.local.email }}</p>
+  <label for="modal-3">
+    <div class="modal-trigger">Edit</div>
+  </label>
 </section>
+
+<div class="modal">
+  <input class="modal-state" id="modal-3" type="checkbox" />
+  <div class="modal-fade-screen">
+    <div class="modal-inner">
+      <div class="modal-close" for="modal-3"></div>
+      <form id="edit" name="users.editForm" ng-submit="users.editUser()" novalidate>
+
+        <div>
+          <input type="text" id="username" name="username" ng-model="profile.currentUser.local.username">
+        </div>
+
+        <div>
+          <input type="text" id="fullname" name="fullname" ng-model="profile.currentUser.local.fullname">
+        </div>
+
+        <div>
+          <input type="text" id="image" name="image" ng-model="profile.currentUser.local.image">
+        </div>
+
+        <div>
+          <input type="email" id="email" name="email" ng-model="profile.currentUser.local.email" required>
+        </div>
+
+        <div>
+          <input type="password" id="password" name="password" required>
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

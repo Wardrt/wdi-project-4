@@ -16,7 +16,7 @@ router.route('/users')
 
 router.route('/users/:id')
   .get(usersController.usersShow)
-  .patch(usersController.usersUpdate)
+  .put(usersController.usersUpdate)
   .delete(usersController.usersDelete);
 
 router.route('/chats/open')

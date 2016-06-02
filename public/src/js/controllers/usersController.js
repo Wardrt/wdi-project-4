@@ -21,6 +21,7 @@ angular
     self.getUsers         = getUsers;
     self.register         = register;
     self.login            = login;
+    self.editUser         = editUser;
     self.logout           = logout;
     self.checkLoggedIn    = checkLoggedIn;
     self.sendMessage      = sendMessage;
@@ -79,6 +80,15 @@ angular
 
     function login() {
       User.login(self.user, handleLogin, handleError);
+    }
+
+    function editUser() {
+      User.update({ id: self.currentUser._id }, { user: self.user }, function(data){
+        self.user = data;
+        console.log(data);
+      });
+      self.getUsers();
+      self.currentUser = CurrentUser.getUser();
     }
 
     function logout() {

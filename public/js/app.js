@@ -47104,7 +47104,25 @@ $(function() {
     }
   });
 
-  $(".modal-fade-screen, .modal-close").on("click", function() {
+  $(".modal-fade-screen, .modal-close, button").on("click", function() {
+    $(".modal-state:checked").prop("checked", false).change();
+  });
+
+  $(".modal-inner").on("click", function(e) {
+    e.stopPropagation();
+  });
+});
+
+$(function() {
+  $("#modal-3").on("change", function() {
+    if ($(this).is(":checked")) {
+      $("body").addClass("modal-open");
+    } else {
+      $("body").removeClass("modal-open");
+    }
+  });
+
+  $(".modal-fade-screen, .modal-close, button").on("click", function() {
     $(".modal-state:checked").prop("checked", false).change();
   });
 
@@ -47254,6 +47272,7 @@ angular
     self.getUsers         = getUsers;
     self.register         = register;
     self.login            = login;
+    self.editUser         = editUser;
     self.logout           = logout;
     self.checkLoggedIn    = checkLoggedIn;
     self.sendMessage      = sendMessage;
@@ -47314,6 +47333,15 @@ angular
       User.login(self.user, handleLogin, handleError);
     }
 
+    function editUser() {
+      User.update({ id: self.currentUser._id }, { user: self.user }, function(data){
+        self.user = data;
+        console.log(data);
+      });
+      self.getUsers();
+      self.currentUser = CurrentUser.getUser();
+    }
+
     function logout() {
       self.all         = null;
       self.currentUser = null;
@@ -47354,7 +47382,8 @@ function User($resource, API){
       'login': {
         url: API + "/login",
         method: "POST"
-      }
+      },
+      'update': { method: 'PUT' }
     }
   );
 }
