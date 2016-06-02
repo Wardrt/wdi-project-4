@@ -64,8 +64,8 @@ app.get("/*", function(req, res) {
 });
 
 io.on('connection', function(socket){
+  console.log(socket.client.conn.id);
   socket.on('chat message', function(msg){
-    console.log(msg);
     io.in(msg.channel).emit('message', msg);
   });
   socket.on("join", function(room){

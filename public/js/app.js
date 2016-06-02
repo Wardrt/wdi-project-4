@@ -47232,7 +47232,7 @@ angular
           text: self.message,
           username: self.currentUser.local.username,
           color: randomColor,
-          channel: "eleaguetv"
+          channel: $stateParams.name
         });
         self.message = "";
       }
