@@ -520,6 +520,17 @@ header.navigation .search-bar form button[type=submit] img {
   padding: 0 2em;
 }
 
+.modal .modal-inner input {
+  width: 100%;
+}
+
+.modal .modal-inner button {
+  width: 50px;
+  background: #82e0ff;
+  border: 2px solid black;
+  padding: 5px 5px;
+}
+
 .modal .modal-state:checked + .modal-fade-screen {
   opacity: 1;
   visibility: visible;

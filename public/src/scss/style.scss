@@ -544,6 +544,17 @@ header.navigation {
         padding: 0 2em;
       }
     }
+
+    input {
+      width: 100%;
+    }
+
+    button {
+      width: 50px;
+      background: rgb(130, 224, 255);
+      border: 2px solid black;
+      padding: 5px 5px;
+    }
   }
 
   .modal-state:checked + .modal-fade-screen {
