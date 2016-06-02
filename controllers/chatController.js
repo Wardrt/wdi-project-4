@@ -28,8 +28,20 @@ function open(req, res){
   });
 }
 
-function close(){
+function close(req, res){
   // Mark chat as closed
+  // When a chat has a sender and receiver, chat is closed.
+  // When a sender or receiver leaves the chat the chat is open again.
+  // If sender leaves, receiver becomes sender?
+  Chat.find({
+    open: false
+  }, function(err, chat){
+    if ((chat.sender === null && chat.receiver !== null) || (chat.receiver === null && chat.sender !== null)) {
+      // So after a socket.disconnect do something.
+      chat.open = true;
+    }
+    // If both leave delete the room?
+  });
 }
 
 module.exports = {
