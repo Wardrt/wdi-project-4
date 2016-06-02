@@ -9,7 +9,7 @@ angular
     var randomColor = '#'+Math.floor(Math.random()*16777215).toString(16);
 
     if ($stateParams.id) {
-      self.user = User.get({ id: $stateParams.id }, function(res){
+      User.get({ id: $stateParams.id }, function(res){
         self.user = res.user;
       });
     }
@@ -83,9 +83,11 @@ angular
     }
 
     function editUser() {
-      User.update({ id: $stateParams._id }, { user: self.currentUser }, function(data){
+      console.log(self.user);
+      User.update({ id: $stateParams.id }, { user: self.user }, function(data){
         self.user = data;
       });
+      // $(".modal-state:checked").prop("checked", false).change();
     }
 
     function logout() {
