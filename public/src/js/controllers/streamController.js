@@ -9,6 +9,7 @@ function StreamController($http, URL, $stateParams, $state, $sce, socket) {
   self.getStreams      = getStreams;
   self.getStream       = getStream;
   self.searchForStream = searchForStream;
+  self.online          = true;
 
   if ($stateParams.name) {
     getStream($stateParams.name);
@@ -30,9 +31,13 @@ function StreamController($http, URL, $stateParams, $state, $sce, socket) {
       method: "GET",
       url: URL + "/streams/" + name
     }).then(function(res){
-      var streamerName = res.data.stream.channel.url;
-      var streamer = streamerName.replace(/(https:\/\/www.twitch.tv\/)/g, "");
-      self.iframesrc = $sce.getTrustedResourceUrl("http://player.twitch.tv/?channel=" + streamer);
+      if (res.data.stream === null) {
+        self.online = false;
+      } else {
+        var streamerName = res.data.stream.channel.url;
+        var streamer = streamerName.replace(/(https:\/\/www.twitch.tv\/)/g, "");
+        self.iframesrc = $sce.getTrustedResourceUrl("http://player.twitch.tv/?channel=" + streamer);
+      }
     });
   }
 

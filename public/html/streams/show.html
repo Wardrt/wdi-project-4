@@ -1,14 +1,19 @@
-<div id="stream-pane">
+<div ng-show="streams.online" id="stream-pane">
   <iframe ng-src="{{ streams.iframesrc }}">
     Something went wrong...
   </iframe>
 </div>
 
-<div class="js-menu panel-content">
+<div ng-show="streams.online" class="js-menu panel-content">
   <ul id="messages"></ul>
 </div>
 
-<form id="chat-form" ng-submit="users.sendMessage()">
+<form ng-show="streams.online" id="chat-form" ng-submit="users.sendMessage()">
   <input id="m" ng-model="users.message" autocomplete="off" />
   <button type="submit">Send</button>
 </form>
+
+
+<div ng-hide="streams.online" class="main-template">
+  <h1>There is no stream</h1>
+</div>
