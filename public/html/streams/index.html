@@ -1,9 +1,19 @@
-<ul class="main-template">
+<ul class="main-template streams-index">
   <li ng-repeat="stream in streams.all">
-    <a href="#" ui-sref="stream({name: stream.channel.name})" ng-click="streams.getStream(stream.channel.name)">
-      <img ng-src="{{ stream.preview.medium }}"/>
-    </a>
-    <h4>{{ stream.channel.display_name }}</h4>
-    <p>{{ stream.channel.status }}</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-image">
+          <a href="#" ui-sref="stream({name: stream.channel.name})" ng-click="streams.getStream(stream.channel.name)">
+            <img ng-src="{{ stream.preview.medium }}"/>
+          </a>
+        </div>
+        <div class="card-header">
+          {{ stream.channel.display_name }}
+        </div>
+        <div class="card-copy">
+          <p>{{ stream.channel.status }}</p>
+        </div>
+      </div>
+    </div>
   </li>
 </ul>
