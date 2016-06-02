@@ -2936,6 +2936,10 @@ section {
   padding: 1%;
 }
 
+#profile {
+  text-align: center;
+}
+
 #stream-pane {
   float: left;
   transform: translateY(61px);
