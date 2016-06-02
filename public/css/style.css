@@ -2925,7 +2925,11 @@ section {
 }
 
 .home-info .card {
-  background-color: #eee;
+  background-color: #ddd;
+}
+
+.home-info .card .card-header {
+  background-color: #ddd;
 }
 
 .home-footer {

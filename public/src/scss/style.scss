@@ -58,7 +58,10 @@ section {
     ),
     url("../images/ESL-Trophy-Header.jpg");
   .card {
-    background-color: #eee;
+    background-color: #ddd;
+    .card-header {
+      background-color: #ddd;
+    }
   }
 }
 
