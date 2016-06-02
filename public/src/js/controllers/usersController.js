@@ -83,12 +83,9 @@ angular
     }
 
     function editUser() {
-      User.update({ id: self.currentUser._id }, { user: self.user }, function(data){
+      User.update({ id: self.currentUser._id }, { user: self.currentUser }, function(data){
         self.user = data;
-        console.log(data);
       });
-      self.getUsers();
-      self.currentUser = CurrentUser.getUser();
     }
 
     function logout() {

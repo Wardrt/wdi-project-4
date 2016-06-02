@@ -47334,12 +47334,10 @@ angular
     }
 
     function editUser() {
-      User.update({ id: self.currentUser._id }, { user: self.user }, function(data){
-        self.user = data;
+      User.update({ id: self.currentUser._id }, { user: self.currentUser }, function(data){
         console.log(data);
+        self.user = data;
       });
-      self.getUsers();
-      self.currentUser = CurrentUser.getUser();
     }
 
     function logout() {
