@@ -297,6 +297,10 @@ header.navigation .search-bar form button[type=submit] img {
   padding: 0;
 }
 
+.streams-index li {
+  float: left;
+}
+
 .cards {
   display: flex;
   flex-wrap: wrap;
@@ -345,11 +349,12 @@ header.navigation .search-bar form button[type=submit] img {
   font-size: 0.9em;
   line-height: 1.5em;
   padding: 0.75em 0.75em;
+  height: 77.3px;
 }
 
 .card .card-copy p {
   margin: 0 0 0.75em;
-  max-width: 320px;
+  width: 320px;
   word-wrap: break-word;
 }
 

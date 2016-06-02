@@ -309,10 +309,9 @@ header.navigation {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  // max-width: 33%;
-  // li {
-  //   float: left;
-  // }
+  li {
+    float: left;
+  }
 }
 
 .cards {
@@ -376,10 +375,10 @@ header.navigation {
     font-size: 0.9em;
     line-height: 1.5em;
     padding: ($base-spacing / 2) ($base-spacing / 2);
-
+    height: 77.3px;
     p {
       margin: 0 0 ($base-spacing / 2);
-      max-width: 320px;
+      width: 320px;
       word-wrap:break-word;
     }
   }
