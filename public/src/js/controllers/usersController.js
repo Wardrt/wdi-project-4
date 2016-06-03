@@ -89,6 +89,10 @@ angular
       $(".modal-state:checked").prop("checked", false).change();
     }
 
+    $(".modal-fade-screen, .modal-close").on("click", function() {
+      $(".modal-state:checked").prop("checked", false).change();
+    });
+
     function logout() {
       self.all         = null;
       self.currentUser = null;
