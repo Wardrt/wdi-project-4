@@ -3049,6 +3049,20 @@ header.navigation .logo img {
   padding: 0.8em 0;
 }
 
+header.navigation .search-bar.search-bar-mobile {
+  float: none;
+}
+
+header.navigation .search-bar.search-bar-mobile button[type="submit"] {
+  background: transparent;
+  border: 0;
+  bottom: 0.3em;
+  padding: 0 9px;
+  position: absolute;
+  right: 0.3em;
+  top: 0.3em;
+}
+
 header.navigation .navigation-menu-button {
   color: rgba(255, 255, 255, 0.7);
   display: block;
@@ -3157,6 +3171,18 @@ header.navigation .navigation-tools {
     background: transparent;
     clear: none;
     float: right;
+  }
+}
+
+@media (min-width: 860px) {
+  header.navigation .search-bar.search-bar-mobile {
+    display: none;
+  }
+}
+
+@media (max-width: 859px) {
+  header.navigation .navigation-tools {
+    display: none;
   }
 }
 

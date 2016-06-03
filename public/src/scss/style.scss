@@ -191,6 +191,20 @@ header.navigation {
 
   // Mobile view
 
+  .search-bar.search-bar-mobile{
+    float: none;
+
+     button[type="submit"]{
+        background: transparent;
+        border: 0;
+        bottom: 0.3em;
+        padding: 0 9px;
+        position: absolute;
+        right: 0.3em;
+        top: 0.3em;
+      }
+    }
+
   .navigation-menu-button {
     color: $navigation-color;
     display: block;
@@ -295,6 +309,18 @@ header.navigation {
       background: transparent;
       clear: none;
       float: right;
+    }
+  }
+
+  @media (min-width: 860px){
+    .search-bar.search-bar-mobile {
+      display: none;
+    }
+  }
+
+  @media (max-width: 859px){
+    .navigation-tools {
+      display: none;
     }
   }
 
